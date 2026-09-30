@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3068645760428825681}
   m_Layer: 0
   m_Name: fireball
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5353841184698615464, guid: db27fa862047fd14eab857e553e282b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   speedval: 6
-  points: 100
+  points: -100
 --- !u!61 &2125912291271303891
 BoxCollider2D:
   m_ObjectHideFlags: 0

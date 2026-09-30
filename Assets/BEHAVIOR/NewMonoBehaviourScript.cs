@@ -1,16 +1,23 @@
+using System.Net.Sockets;
+using TMPro;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     public float speed = 4;
+    private int scoreVal = 0;
+
+    public TextMeshProUGUI scoreBox;
+
     // Update is called once per frame
     void Update()
     {
         // traveling up 
         {
-            if (Input.GetKey(KeyCode.W)) 
+            if (Input.GetKey(KeyCode.W))
                 transform.Translate(transform.up * speed * Time.deltaTime);
         }
         {
@@ -30,8 +37,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Bat")
+        if (collision.gameObject.tag == "projectile")
 
-            Destroy(gameObject);
+            if (collision.GetComponent<Projectile>() != null)
+            {
+                scoreVal += collision.GetComponent<Projectile>().points;
+                scoreBox.text = "Score: " + scoreVal;
+                Destroy(collision.gameObject);
+            }
+        
     }
 }
