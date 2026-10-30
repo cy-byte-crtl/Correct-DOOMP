@@ -26,9 +26,9 @@ public class NewMonoBehaviourScript1 : MonoBehaviour
 
         }
 
-        if (transform.position.y < -6)
+            if (transform.position.y < -6)
 
-        { Destroy(gameObject); }
+            { Destroy(gameObject); }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

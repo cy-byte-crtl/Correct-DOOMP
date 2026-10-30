@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemybuller : MonoBehaviour
+public class Enemybullet : MonoBehaviour
 {
     public float speed = 6;
 
@@ -19,7 +19,7 @@ public class Enemybuller : MonoBehaviour
 
         if (collision.gameObject.CompareTag("galga player"))
         {
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
 
         }
         }

@@ -8,6 +8,9 @@ TagManager:
   - projectile
   - galga player
   - enemy
+  - mutli shot
+  - power up multi shot
+  - Multi
   layers:
   - Default
   - TransparentFX

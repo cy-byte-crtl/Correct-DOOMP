@@ -1,11 +1,12 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Ship : MonoBehaviour
 {
     public float speed = 4;
-    private int scoreVal = 0;
+   
 
     public Image[] lives;
 
@@ -13,27 +14,35 @@ public class Ship : MonoBehaviour
 
     public GameObject Bullet;
 
-    public TextMeshProUGUI scoreBox;
+    public GameObject multi_shot;
+
+    private bool hasMultishot = false;
+
+    public float hasMultishotTimer = 0, hasMultishotWait = 5;
 
 
-        // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         // traveling up 
 
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.W))
+        {
             transform.Translate(transform.up * speed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.S))
+        {
             transform.Translate(-transform.up * speed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.D))
+        {
             transform.Translate(transform.right * speed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.A))
+        {
             transform.Translate(-transform.right * speed * Time.deltaTime);
         }
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -7, 7), Mathf.Clamp(transform.position.y, -4, 4), 0);
@@ -41,26 +50,48 @@ public class Ship : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
 
         {
-            Instantiate(Bullet, transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
+            if (!hasMultishot)
+                Instantiate(Bullet, transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
+            else
+                Instantiate(multi_shot, transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
         }
 
+        hasMultishotTimer += Time.deltaTime;
 
+        if (hasMultishotTimer > hasMultishotWait)
+        {
+
+            hasMultishotTimer = 0;
+            hasMultishot = false;
+        }
     }
-          private void OnTriggerEnter2D(Collider2D collision)
-    { 
 
-        if (collision.gameObject.CompareTag("enemy")) || collision.gameObject.CompareTag("power up multi shot"))) 
-      
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("enemy"))
         {
             lifecount -= 1;
             if (lifecount <= 0)
+            {
                 lifecount = 0;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+
             lives[lifecount].enabled = false;
-
-            if (collision.gameObject.CompareTag("power up multi shot"))
-                Destroy(collision.gameObject);
-
         }
+            if (collision.gameObject.CompareTag("Multi")) 
+
+            {
+                hasMultishot = true;
+
+
+
+            }
+
+
+
+        
     }
   
     
