@@ -13,8 +13,17 @@ public class Enemybuller : MonoBehaviour
         if (transform.position.y < -6)
         { Destroy(gameObject); }
     }
-  
-          
-}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+
+        if (collision.gameObject.CompareTag("galga player"))
+        {
+            Destroy(collision.gameObject);
+
+        }
+        }
+
+    }
 
 

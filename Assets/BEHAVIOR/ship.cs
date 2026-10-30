@@ -9,11 +9,14 @@ public class Ship : MonoBehaviour
 
     public Image[] lives;
 
+    public int lifecount = 3;
+
     public GameObject Bullet;
 
     public TextMeshProUGUI scoreBox;
 
-    // Update is called once per frame
+
+        // Update is called once per frame
     void Update()
     {
         // traveling up 
@@ -41,12 +44,23 @@ public class Ship : MonoBehaviour
             Instantiate(Bullet, transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
         }
 
+
     }
           private void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
 
+        if (collision.gameObject.CompareTag("enemy")) || collision.gameObject.CompareTag("power up multi shot"))) 
+      
+        {
+            lifecount -= 1;
+            if (lifecount <= 0)
+                lifecount = 0;
+            lives[lifecount].enabled = false;
 
-        if (collision.gameObject.CompareTag("enemy")) ;
+            if (collision.gameObject.CompareTag("power up multi shot"))
+                Destroy(collision.gameObject);
+
+        }
     }
   
     

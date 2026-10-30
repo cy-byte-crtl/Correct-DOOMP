@@ -858,6 +858,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ship
   speed: 4
+  lives:
+  - {fileID: 331560591}
+  - {fileID: 1300036152}
+  - {fileID: 123841377}
   Bullet: {fileID: 240860265150088996, guid: 6f5a53bc8a61ff24d9401ecc4540b424, type: 3}
   scoreBox: {fileID: 0}
 --- !u!50 &2104250662
