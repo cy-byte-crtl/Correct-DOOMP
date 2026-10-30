@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - playerbullet
   - projectile
+  - galga player
   - enemy
   layers:
   - Default

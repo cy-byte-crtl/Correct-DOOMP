@@ -5,7 +5,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class Bullet : MonoBehaviour
 {
 
-    public float speedval = 6;
+    public float speedval = 5;
     public int points = 100;
 
     // Update is called once per frame
@@ -13,9 +13,9 @@ public class Bullet : MonoBehaviour
 
     {
 
-        transform.Translate(-transform.right * speedval * Time.deltaTime);
+        transform.Translate(transform.up * speedval * Time.deltaTime);
 
-        if (transform.position.x < -10)
+        if (transform.position.y > 6)
             Destroy(gameObject);
     }
 
