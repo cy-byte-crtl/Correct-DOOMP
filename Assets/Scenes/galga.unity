@@ -1130,7 +1130,9 @@ MonoBehaviour:
   - {fileID: 123841377}
   lifecount: 3
   Bullet: {fileID: 240860265150088996, guid: 6f5a53bc8a61ff24d9401ecc4540b424, type: 3}
-  multi_shot: {fileID: 0}
+  multi_shot: {fileID: 4979556086146916806, guid: 84d4b1417fdad66479d375ea2cc36256, type: 3}
+  hasMultishotTimer: 0
+  hasMultishotWait: 5
 --- !u!50 &2104250662
 Rigidbody2D:
   serializedVersion: 5
